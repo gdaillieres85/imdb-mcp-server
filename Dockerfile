@@ -33,5 +33,5 @@ ENV PORT=8081
 # Reset the entrypoint, don't invoke `uv`
 ENTRYPOINT []
 
-# Run the application directly using the venv Python
-CMD ["python", "-m", "imdb_mcp_server.main"]
+# Run the application using uvicorn to serve the SSE endpoints
+CMD uvicorn imdb_mcp_server.sse:app --host 0.0.0.0 --port $PORT
